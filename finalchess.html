@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <style>
+  #board > div {
+  height: 100px;
+}
+
+.white, .black {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border: 1px solid;
+}
+
+.white {
+  background-color: white;
+}
+
+.black {
+  background-color: black;
+}
+    </style>
+    <body onkeydown='getKeyAndMove(event)'>
+    <div id="board"></div>
+<script>
+var board = document.getElementById("board");  
+
+for(var i = 0; i < 5; i++) {                   
+  var row = document.createElement("div");     
+  for(var j = 0; j < 5; j++) {                 
+    var cell = document.createElement("div");  
+    if(i % 2 == j % 2) 
+    {
+      cell.className = "white";
+    }
+    else
+    {
+        cell.className = "black";                   
+    }
+   row.appendChild(cell); 
+  }
+  board.appendChild(row); 
+}
+var z = document.getElementsByTagName("cell");
+        var t = 0,a=5;
+        var num=65;
+        function getKeyAndMove(e) {
+            if(num<69)
+            {
+            var key_code = e.which || e.keyCode;
+            switch (key_code) {
+                case 37://left
+                    t = t - 1;
+                    console.log(String.fromCharCode(num)+ ""+(t%5));
+                    break;
+                case 38://up
+                    t = t - a;
+                    num--;
+                    console.log(String.fromCharCode(num)+ ""+(t%5));
+                    break;
+                case 39://right
+                    t = t + 1;
+                    console.log(String.fromCharCode(num)+ ""+(t%5));
+                    break;
+                case 40://down
+                    t = t + a;
+                    num++;
+                    console.log(String.fromCharCode(num)+ ""+(t%5));
+                    break;
+             }
+            }
+        }
+</script>
+</body>
+</html>
